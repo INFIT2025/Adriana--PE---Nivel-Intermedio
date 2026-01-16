@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Entrenamiento - Adriana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        infit: {
+                            black: '#050505',
+                            dark: '#121212',
+                            card: '#1e1e1e',
+                            gold: '#FFD700',
+                            golddim: '#C5A000',
+                            white: '#ffffff',
+                            gray: '#888888',
+                            accent: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #050505 70%);
+            color: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glass-panel {
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .pyramid-indicator {
+            background: linear-gradient(90deg, #FFD700 0%, #C5A000 100%);
+            color: black;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FFD700; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-infit-gold selection:text-black">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-heading font-bold tracking-wider text-infit-white italic">
+                    IN<span class="text-infit-gold">FIT</span>
+                </h1>
+                <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Tu Mejor Versión</p>
+            </div>
+            <div class="text-right">
+                <div class="text-sm font-bold text-infit-gold font-heading tracking-wide uppercase">Adriana</div>
+                <div class="text-xs text-gray-400">Nivel Intermedio</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Info Banner -->
+    <div class="bg-infit-dark border-b border-gray-800 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 py-6 relative z-10">
+            <div class="grid grid-cols-2 gap-4 text-center md:text-left">
+                <div>
+                    <p class="text-infit-gold text-xs font-bold uppercase tracking-wider mb-1"><i class="far fa-calendar-alt mr-1"></i> Duración</p>
+                    <p class="text-sm text-gray-200">19 Ene 2026 - 19 Feb 2026</p>
+                </div>
+                <div class="text-right md:text-left">
+                    <p class="text-infit-gold text-xs font-bold uppercase tracking-wider mb-1"><i class="fas fa-dumbbell mr-1"></i> Frecuencia</p>
+                    <p class="text-sm text-gray-200">4 Días / Semana</p>
+                </div>
+            </div>
+            
+            <div class="mt-4 bg-infit-gold/10 border border-infit-gold/20 p-3 rounded-lg flex items-start gap-3">
+                <i class="fas fa-bolt text-infit-gold mt-1"></i>
+                <p class="text-xs text-gray-300">
+                    <strong class="text-infit-gold uppercase">Nota de Sistema:</strong> Rutina en <span class="text-white font-bold underline decoration-infit-gold">Piramidal Intensa</span>. Reps: 6, 8, 10 (aumentando peso) + descendentes 8, 6 (disminuyendo peso). Descanso de 1-2 min entre series.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-8 w-full">
+        
+        <!-- Day Selector -->
+        <div class="flex overflow-x-auto pb-4 gap-2 mb-6 scrollbar-hide" id="daySelector"></div>
+
+        <!-- Current Day View -->
+        <div id="workoutContainer" class="space-y-6 min-h-[400px]"></div>
+
+        <!-- Progresión y Recomendaciones -->
+        <section class="mt-16 border-t border-gray-800 pt-8">
+            <h2 class="text-2xl font-heading font-bold text-white mb-6 flex items-center">
+                <i class="fas fa-chart-line mr-3 text-infit-gold"></i> PROGRESIÓN Y RECOMENDACIONES
+            </h2>
+            <div class="space-y-6">
+                <!-- Antes de Entrenar -->
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="font-bold text-lg text-white mb-3 flex items-center">
+                        <i class="fas fa-fire-alt mr-2 text-infit-gold"></i> Antes de Entrenar (Calentamiento)
+                    </h3>
+                    <p class="text-gray-400 text-sm mb-3">
+                        Realiza <strong>5-8 minutos de movilidad</strong>. 
+                        <span class="text-infit-gold italic text-xs block mt-1">Nota: Esta es una variación sugerida; si ya cuentas con tu propia técnica de calentamiento establecida, la puedes mantener sin problemas.</span>
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                        <a href="https://www.youtube.com/shorts/VsU27VYUipM" target="_blank" class="flex items-center text-xs font-bold text-black bg-infit-gold hover:bg-white transition-colors p-3 rounded">
+                            <i class="fas fa-video mr-2"></i> Calentamiento Superior
+                        </a>
+                        <a href="https://www.youtube.com/shorts/c20G6RUIVYw" target="_blank" class="flex items-center text-xs font-bold text-black bg-infit-gold hover:bg-white transition-colors p-3 rounded">
+                            <i class="fas fa-video mr-2"></i> Calentamiento Inferior
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Después de Entrenar -->
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="font-bold text-lg text-white mb-3 flex items-center">
+                        <i class="fas fa-snowflake mr-2 text-infit-gold"></i> Después de Entrenar (Estiramiento)
+                    </h3>
+                    <p class="text-gray-400 text-sm mb-3">
+                        Dedica <strong>5-10 minutos a estirar</strong>. 
+                        <span class="text-infit-gold italic text-xs block mt-1">Nota: Esta es una variación opcional; si ya tienes tu técnica de estiramiento definida, puedes continuar con ella.</span>
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="https://www.youtube.com/shorts/K0aPac6cCOs" target="_blank" class="flex items-center text-xs font-bold text-gray-300 bg-gray-800 hover:text-infit-gold hover:border-infit-gold border border-gray-700 transition-colors p-3 rounded">
+                            <i class="fas fa-video mr-2"></i> Estiramiento Superior
+                        </a>
+                        <a href="https://www.youtube.com/shorts/0I16d3zLSls" target="_blank" class="flex items-center text-xs font-bold text-gray-300 bg-gray-800 hover:text-infit-gold hover:border-infit-gold border border-gray-700 transition-colors p-3 rounded">
+                            <i class="fas fa-video mr-2"></i> Estiramiento Pierna
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progresión y Ciclo -->
+        <section class="mt-8">
+            <div class="glass-panel p-6 rounded-xl">
+                <h3 class="font-bold text-xl text-white mb-4 flex items-center">
+                    <i class="fas fa-sync-alt mr-2 text-infit-gold"></i> Progresión y Ciclo
+                </h3>
+                
+                <div class="bg-gray-900 border border-gray-700 p-4 rounded-lg mb-6">
+                    <p class="text-infit-gold font-bold text-xs uppercase mb-1"><i class="fas fa-weight-hanging mr-1"></i> Nota de Progresión (Piramidal)</p>
+                    <p class="text-gray-300 text-sm">
+                        En cada Piramidal inicia con peso ligero y aumenta de forma progresiva. Si en algún ejercicio no puedes incrementar el peso, es normal. <strong class="text-white">Prioriza la técnica ante todo.</strong>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <h4 class="font-semibold text-infit-gold text-sm mb-2 uppercase tracking-wide">Plan Semanal:</h4>
+                        <ul class="list-disc list-inside text-gray-400 text-sm space-y-2 ml-2">
+                            <li><strong class="text-white">Semana 1-2:</strong> Peso moderado, enfoque total en sentir la técnica y la conexión mente-músculo.</li>
+                            <li><strong class="text-white">Semana 3-4:</strong> Aumenta ligeramente el peso (5-10%) manteniendo la técnica.</li>
+                        </ul>
+                    </div>
+                    <div class="border-l border-gray-700 md:pl-4">
+                        <h4 class="font-semibold text-infit-gold text-sm mb-2 uppercase tracking-wide">Ciclo de Entrenamiento:</h4>
+                        <p class="text-gray-400 text-sm italic">
+                            "El cuerpo se adapta rápidamente. Para evitar estancamientos, se recomienda cambiar tu rutina cada 4 semanas."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guía General -->
+        <section class="mt-8">
+            <div class="glass-panel p-6 rounded-xl">
+                <h3 class="font-bold text-xl text-white mb-2 flex items-center">
+                    <i class="fas fa-book mr-2 text-infit-gold"></i> Guía General
+                </h3>
+                <ul class="list-none space-y-3 text-sm mt-4">
+                    <li class="flex items-start">
+                        <i class="fas fa-pen-to-square text-infit-gold mt-1 mr-3"></i>
+                        <span class="text-gray-400"><strong class="text-white">Registro:</strong> Anota tus pesos. Si no mides tu progreso, no puedes mejorarlo.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-tint text-infit-gold mt-1 mr-3"></i>
+                        <span class="text-gray-400"><strong class="text-white">Hidratación:</strong> Mantén una hidratación constante; bebe agua antes, durante y después del entreno.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Alimentación y Descanso -->
+        <section class="mt-8 mb-12">
+            <h2 class="text-2xl font-heading font-bold text-white mb-6 flex items-center">
+                <i class="fas fa-apple-alt mr-3 text-infit-gold"></i> ALIMENTACIÓN Y DESCANSO
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="font-bold text-lg text-white mb-2 flex items-center">
+                        <i class="fas fa-utensils mr-2 text-infit-gold"></i> Nutrición
+                    </h3>
+                    <p class="text-gray-400 text-sm mb-4">La nutrición adecuada es el 70% de tus resultados. Come alimentos reales y evita procesados.</p>
+                    <div class="flex items-center justify-center text-infit-gold font-bold text-[10px] bg-black/50 p-4 rounded border border-infit-gold/20 text-center uppercase">
+                        EN INFIT TAMBIÉN TE PODEMOS APOYAR CON TU PLAN PERSONALIZADO
+                    </div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="font-bold text-lg text-white mb-2 flex items-center">
+                        <i class="fas fa-bed mr-2 text-infit-gold"></i> Descanso
+                    </h3>
+                    <p class="text-gray-400 text-sm">El músculo crece cuando descansas.</p>
+                    <ul class="mt-2 space-y-1 text-sm text-gray-500">
+                        <li>• Dormir mínimo 7-8 horas.</li>
+                        <li>• Evitar pantallas 30 min antes de dormir.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-gray-800 bg-black mt-auto py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-infit-gold font-heading font-bold text-xl mb-2 italic">INFIT</p>
+            <p class="text-gray-600 text-xs">Plan personalizado para Adriana</p>
+            <p class="text-gray-700 text-[10px] mt-2">© 2026 InFit Training System</p>
+        </div>
+    </footer>
+
+    <script>
+        const schedule = [
+            {
+                id: 'lunes',
+                label: 'Lunes',
+                focus: 'Inferior (Posterior)',
+                structure: [
+                    { name: 'Hip Thrust (Barra)', video: "https://www.youtube.com/shorts/bup775DiMUE", type: 'pyramid' },
+                    { name: 'Sentadilla Sumo (mancuerna)', video: "https://www.youtube.com/shorts/VMOLFxrG3Zs", type: 'pyramid' },
+                    { name: 'Peso Muerto (Barra)', video: "https://www.youtube.com/shorts/papo8nyQnMg", type: 'pyramid' },
+                    { name: 'Flexiones (Curl Femoral/Isquios)', video: "https://www.youtube.com/shorts/6JQflLWhKfg", type: 'pyramid' },
+                    { name: 'Mountain Climbers', video: "https://www.youtube.com/shorts/7W4JEfEKuC4", type: 'abs' }
+                ]
+            },
+            {
+                id: 'martes',
+                label: 'Martes',
+                focus: 'Superior (Empuje)',
+                structure: [
+                    { name: 'Press Horizontal (Mancuerna)', video: "https://www.youtube.com/shorts/QHJKxwxJnJQ", type: 'pyramid' },
+                    { name: 'Press Inclinado (Mancuerna)', video: "https://www.youtube.com/shorts/a64mtMHyPfY", type: 'pyramid' },
+                    { name: 'Press Militar (Mancuerna)', video: "https://www.youtube.com/shorts/0434douBSU4", type: 'pyramid' },
+                    { name: 'Curl de Bíceps (Mancuerna)', video: "https://www.youtube.com/shorts/r-BR6kfLUT4", type: 'pyramid' },
+                    { name: 'Tijeras Horizontales', video: "https://www.youtube.com/shorts/nJekmdAhWnM", type: 'abs' }
+                ]
+            },
+            {
+                id: 'miercoles',
+                label: 'Miércoles',
+                focus: 'Superior (Tracción)',
+                structure: [
+                    { name: 'Jalón Abierto (Polea)', video: "https://www.youtube.com/shorts/9PfMG7pjIYU", type: 'pyramid' },
+                    { name: 'Jalón Cerrado (Maneral en V)', video: "https://www.youtube.com/shorts/RRLRFWxMkvA", type: 'pyramid' },
+                    { name: 'Remo Sentado (Polea)', video: "https://www.youtube.com/shorts/own3uEE4wP8", type: 'pyramid' },
+                    { name: 'Extensión con Cuerda (Tríceps)', video: "https://www.youtube.com/shorts/4NWWB0f0vzQ", type: 'pyramid' },
+                    { name: 'Tijeras Verticales', video: "https://www.youtube.com/shorts/3S9GgIzcJjo", type: 'abs' }
+                ]
+            },
+            {
+                id: 'jueves',
+                label: 'Jueves',
+                focus: 'Inferior (Frontal)',
+                structure: [
+                    { name: 'Sentadilla (Barra)', video: "https://www.youtube.com/shorts/5c6mAD-7G8A", type: 'pyramid' },
+                    { name: 'Sentadilla Goblet (Mancuerna)', video: "https://www.youtube.com/shorts/pSnkNE2TOSQ", type: 'pyramid' },
+                    { name: 'Extensiones', video: "https://www.youtube.com/shorts/S50jrJDzO4M", type: 'pyramid' },
+                    { name: 'Costurera', video: "https://www.youtube.com/shorts/OaRuiLklB-k", type: 'pyramid' },
+                    { name: 'Mountain Climbers', video: "https://www.youtube.com/shorts/7W4JEfEKuC4", type: 'abs' }
+                ]
+            }
+        ];
+
+        let activeDayId = 'lunes';
+
+        function renderDaySelector() {
+            const container = document.getElementById('daySelector');
+            container.innerHTML = schedule.map(day => {
+                const isActive = day.id === activeDayId;
+                return `
+                    <button onclick="setActiveDay('${day.id}')" class="flex-shrink-0 px-6 py-3 rounded text-sm font-bold uppercase tracking-wider transition-all duration-300 font-heading ${isActive ? 'bg-infit-gold text-black shadow-[0_0_15px_rgba(255,215,0,0.4)] transform scale-105' : 'bg-infit-card text-gray-500 border border-gray-800 hover:text-white'}">
+                        ${day.label}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderWorkout() {
+            const container = document.getElementById('workoutContainer');
+            const day = schedule.find(d => d.id === activeDayId);
+            if (!day) return;
+
+            let html = `
+                <div class="glass-panel p-6 rounded-2xl mb-8 animate-fade-in">
+                    <h2 class="text-4xl font-heading font-bold text-white mb-2 italic uppercase">${day.focus}</h2>
+                    <div class="inline-flex items-center bg-infit-gold/10 px-4 py-2 rounded border border-infit-gold/30">
+                        <i class="fas fa-clock text-infit-gold mr-2"></i>
+                        <span class="text-xs font-bold text-infit-gold uppercase">Descanso: 1-2 min</span>
+                    </div>
+                </div>
+                <div class="space-y-4 animate-fade-in">`;
+
+            day.structure.forEach((ex, idx) => {
+                const isAbs = ex.type === 'abs';
+                html += `
+                    <div class="bg-infit-card rounded-xl p-5 border border-gray-800 flex justify-between items-center group hover:border-infit-gold/50 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center text-infit-gold font-bold">${idx + 1}</div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">${ex.name}</h3>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="bg-gray-800 text-[10px] px-2 py-1 rounded text-gray-300 uppercase font-bold">2 Series</span>
+                                    ${isAbs ? 
+                                        `<span class="bg-infit-gold/20 text-infit-gold text-[10px] px-2 py-1 rounded font-bold uppercase">15 Reps</span>` :
+                                        `<span class="pyramid-indicator">Piramidal: 6, 8, 10 (+ peso) | 8, 6 (- peso)</span>`
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <a href="${ex.video}" target="_blank" class="text-gray-500 hover:text-infit-gold transition-colors"><i class="fab fa-youtube text-2xl"></i></a>
+                    </div>`;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function setActiveDay(id) {
+            activeDayId = id;
+            renderDaySelector();
+            renderWorkout();
+        }
+
+        renderDaySelector();
+        setActiveDay('lunes');
+    </script>
+</body>
+</html>
