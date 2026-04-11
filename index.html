@@ -3,7 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ADRIANA - NIVEL 3</title>
+    <title>ADRIANA - NIVEL 4</title>
+    
+    <!-- ===== PWA META TAGS ===== -->
+    <meta name="application-name" content="InFit - ADRIANA">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="InFit">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-TileColor" content="#D4AF37">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- iOS Splash Screens -->
+    <link rel="apple-touch-icon" href="https://z-cdn-media.chatglm.cn/files/8156110e-0aff-4d5e-bac8-1605a425dda6.png?auth_key=1874976898-3cdeca9b73ce461a950f348fe864b610-0-f2b4c62b64291ae8d0c26b5707cefc2f">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://z-cdn-media.chatglm.cn/files/8156110e-0aff-4d5e-bac8-1605a425dda6.png?auth_key=1874976898-3cdeca9b73ce461a950f348fe864b610-0-f2b4c62b64291ae8d0c26b5707cefc2f">
+    
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiSW5GaXQgLSBBRFJJQU5BIiwic2hvcnRfbmFtZSI6IkluRml0IiwiZGVzY3JpcHRpb24iOiJQbGFuIGRlIGVudHJlbmFtaWVudG8gTml2ZWwgNCIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMDAwMDAwIiwidGhlbWVfY29sb3IiOiIjRDRBRjM3Iiwib3JpZW50YXRpb24iOiJwb3J0cmFpdC1wcmltYXJ5IiwiaWNvbnMiOlt7InNyYyI6Imh0dHBzOi8vei1jZG4tbWVkaWEuY2hhdGdsbS5jbi9maWxlcy84MTU2MTEwZS0wYWZmLTRkNWUtYmFjOC0xNjA1YTQyNWRkYTYucG5nP2F1dGhfa2V5PTE4NzQ5NzY4OTgtM2NkZWNhOWI3M2NlNDYxYTk1MGYzNDhmZTg2NGI2MTAtMC1mMmI0YzYyYjY0MjkxYWU4ZDBjMjZiNTcwN2NlZmMyZiIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9wbmciLCJwdXJwb3NlIjoiYW55IG1hc2thYmxlIn0seyJzcmMiOiJodHRwczovL3otY2RuLW1lZGlhLmNoYXRnbG0uY24vZmlsZXMvNDQ5ZTg3MDktZTY3Mi00ZjZkLTgzNDAtNmEzZDYzMDk3NTE4LnBuZz9hdXRoX2tleT0xODc0OTc2ODk4LTUyMTY1YWVjMjgyNzQ0NTNiYjlhYmIzMDJmZjBkNjk2LTAtZDIwMjY2MWZhY2Q2MTEwOTA3NjYxOWVlMGJhNjM1ZjIiLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIiwicHVycG9zZSI6ImFueSBtYXNrYWJsZSJ9XSwiY2F0ZWdvcmllcyI6WyJmaXRuZXNzIiwiaGVhbHRoIiwibGlmZXN0eWxlIl19">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
@@ -18,10 +36,20 @@
                 extend: {
                     colors: { gold: '#D4AF37', dark: '#050505', panel: '#151515' },
                     fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Oswald', 'sans-serif'] },
-                    animation: { 'fade-in': 'fadeIn 0.8s ease-out forwards', 'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite', 'float': 'float 3s ease-in-out infinite' },
+                    animation: { 
+                        'fade-in': 'fadeIn 0.8s ease-out forwards', 
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite', 
+                        'float': 'float 3s ease-in-out infinite',
+                        'splash-out': 'splashOut 0.6s ease-in-out forwards',
+                        'logo-pulse': 'logoPulse 2s ease-in-out infinite',
+                        'ring-expand': 'ringExpand 1.5s ease-out infinite'
+                    },
                     keyframes: { 
                         fadeIn: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-10px)' } }
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-10px)' } },
+                        splashOut: { '0%': { opacity: '1', transform: 'scale(1)' }, '100%': { opacity: '0', transform: 'scale(1.1)', visibility: 'hidden' } },
+                        logoPulse: { '0%, 100%': { transform: 'scale(1)', filter: 'drop-shadow(0 0 20px rgba(212,175,55,0.5))' }, '50%': { transform: 'scale(1.05)', filter: 'drop-shadow(0 0 40px rgba(212,175,55,0.8))' } },
+                        ringExpand: { '0%': { transform: 'scale(0.8)', opacity: '1' }, '100%': { transform: 'scale(2)', opacity: '0' } }
                     }
                 }
             }
@@ -34,7 +62,98 @@
         .gold-text { background: linear-gradient(to right, #D4AF37, #F1D780, #D4AF37); -webkit-background-clip: text; color: transparent; background-size: 200% auto; animation: shine 3s linear infinite; }
         @keyframes shine { to { background-position: 200% center; } }
         
-        /* ===== PANTALLA DE ACCESO PULIDA ===== */
+        /* ===== SPLASH SCREEN PWA ===== */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .splash-logo-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .splash-ring {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            animation: ringExpand 1.5s ease-out infinite;
+        }
+        
+        .splash-ring:nth-child(2) { animation-delay: 0.5s; }
+        .splash-ring:nth-child(3) { animation-delay: 1s; }
+        
+        .splash-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            object-fit: contain;
+            animation: logoPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+        }
+        
+        .splash-logo-text {
+            margin-top: 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+        
+        .splash-loader {
+            margin-top: 40px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .splash-loader span {
+            width: 10px;
+            height: 10px;
+            background: #D4AF37;
+            border-radius: 50%;
+            animation: loaderBounce 1.4s ease-in-out infinite both;
+        }
+        
+        .splash-loader span:nth-child(1) { animation-delay: -0.32s; }
+        .splash-loader span:nth-child(2) { animation-delay: -0.16s; }
+        .splash-loader span:nth-child(3) { animation-delay: 0s; }
+        
+        @keyframes loaderBounce {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        
+        .splash-level {
+            margin-top: 16px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.1));
+            border: 1px solid rgba(212,175,55,0.4);
+            border-radius: 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* ===== PANTALLA DE ACCESO ===== */
         #lock-screen { 
             position: fixed; 
             inset: 0; 
@@ -174,14 +293,110 @@
             padding: 6px 14px;
             border-radius: 20px;
         }
+        
+        /* PWA Install Banner */
+        #pwa-install-banner {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, rgba(26,26,26,0.95), rgba(15,15,15,0.98));
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            max-width: 340px;
+            width: calc(100% - 32px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            z-index: 100;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        #pwa-install-banner.show {
+            display: flex;
+        }
+        
+        .pwa-banner-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+        
+        .pwa-banner-text {
+            flex: 1;
+        }
+        
+        .pwa-banner-text h4 {
+            color: #D4AF37;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .pwa-banner-text p {
+            color: #888;
+            font-size: 11px;
+        }
+        
+        .pwa-banner-btn {
+            background: linear-gradient(135deg, #D4AF37, #AA8C2C);
+            color: #000;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .pwa-banner-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            padding: 4px;
+        }
+        
+        .pwa-banner-close:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body class="min-h-screen pb-24 antialiased selection:bg-gold selection:text-black overflow-x-hidden">
 
     <!-- DATA MODEL -->
-    <script id="infit-data-model" type="application/json">{"meta":{"nombre":"ADRIANA","telefono":"7752516065","fechaInicio":"2026-03-02","nivel":3,"lugar":"Commercial Gym","accessType":"full","generatedDate":"2026-03-02T18:34:18.745Z"},"contenido":{"frecuencia":"5 Días / Semana","estrategia":"Adaptación Neuromuscular e Hipertrófica por Frecuencia para Definición","promo":"LA DISCIPLINA ES EL PUENTE ENTRE METAS Y LOGROS.","nutricion":"La nutrición adecuada es el 70% - 80 % de tus resultados.\nCome alimentos reales y evita procesados.\nEn INFIT también te podemos apoyar con tu plan de alimentación. ","descanso":"Asegúrate de dormir 7-9 horas de calidad cada noche. Considera estiramientos ligeros o caminatas activas en tus días de descanso para mejorar la recuperación y la circulación. Escucha a tu cuerpo y ajusta el volumen si sientes fatiga excesiva.","calentamiento":""},"dias":[{"id":"day-1772471310084-0","label":"Lunes","focus":"Full Body: Pierna Frontal Dominante","exercises":[{"id":"ex-1772471310084-b2sjf","name":"Sentadilla Goblet","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/pSnkNE2TOSQ"},{"id":"ex-1772471310084-n1a0q","name":"Puente de Glúteo (Glute Bridge)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/Cxp6D7LEqjM"},{"id":"ex-1772471310084-8sram","name":"Press de Banca con Mancuernas (Plano)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/QHJKxwxJnJQ"},{"id":"ex-1772471310084-gs60u","name":"Jalón al Pecho en Máquina (Agarre Neutro)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/K4CgUrWaEL4"},{"id":"ex-1772471310084-a45co","name":"Press Militar con Mancuernas (De pie)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/xVFamrgzuCE"},{"id":"ex-1772471310084-jvmwt","name":"Plancha Abdominal","sets":"4","reps":"FALLO","url":"https://www.youtube.com/shorts/_Plb5jSSlX4"}]},{"id":"day-1772471310084-1","label":"Martes","focus":"Full Body: Pierna Posterior y Glúteo Dominante","exercises":[{"id":"ex-1772471310084-9mx73","name":"Peso Muerto Rumano con Mancuernas ","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/tprBo4RKrKM"},{"id":"ex-1772471310084-agib1","name":"Prensa de Piernas","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/WAjen1w8kWM"},{"id":"ex-1772471310084-uv3d2","name":"Flexiones de Rodillas (Modificadas)","sets":"4","reps":"10-15","url":"https://www.youtube.com/shorts/YN5pE2JmzHM"},{"id":"ex-1772471310084-xdwb6","name":"Curl de Bíceps con Mancuernas","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/r-BR6kfLUT4"},{"id":"ex-1772471310084-hglx0","name":"Remo Sentado en Máquina (Agarre Cerrado)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/own3uEE4wP8"},{"id":"ex-1772471310084-89jxe","name":"Crunch Abdominal","sets":"4","reps":"FALLO","url":"https://www.youtube.com/shorts/BzYrN4o5X5o"}]},{"id":"day-1772471310084-2","label":"Miércoles","focus":"Full Body: Pierna Frontal Énfasis","exercises":[{"id":"ex-1772471310084-5tkpu","name":"Zancadas con Mancuernas (Estáticas)","sets":"4","reps":"8-10 por pierna","url":"https://www.youtube.com/shorts/OOoMo14FPmM"},{"id":"ex-1772471310084-hf5qu","name":"Curl Femoral en Máquina (Acostado)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/nmqG-tIr0hc"},{"id":"ex-1772471310084-ty5zo","name":"Extensiones de Tríceps (Copa) Mancuerna","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/LvYIcAEy1Ws"},{"id":"ex-1772471310084-pjlh9","name":"Elevaciones Laterales con Mancuernas","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/dd9xo-_ahCg"},{"id":"ex-1772471310084-ed3u3","name":"Remo con Mancuerna a Una Mano","sets":"4","reps":"10-12 por brazo","url":"https://www.youtube.com/shorts/VyJiyek7F3I"},{"id":"ex-1772471310084-l3tzb","name":"Elevación de Piernas (Tumbada)","sets":"4","reps":"FALLO","url":"https://www.youtube.com/shorts/Be3jdafVWAk"}]},{"id":"day-1772471310084-3","label":"Jueves","focus":"Full Body","exercises":[{"id":"ex-1772471310084-o8ovj","name":"Jalón al Pecho en Máquina (Agarre Ancho)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/9PfMG7pjIYU"},{"id":"ex-1772471310084-a6vqf","name":"Jalón al Pecho en Máquina (Cerrado)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/05K8X5wb4TM"},{"id":"ex-1772471310084-gtpba","name":"Press inclinado","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/a64mtMHyPfY"},{"id":"ex-1772471310084-q53nj","name":"Aperturas con Mancuernas en Banco Plano","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/WvOpBoKbaaY"},{"id":"ex-1772471310084-hs91b","name":"Press de Hombros Sentado con Mancuernas","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/L8nA6YET0vE"},{"id":"ex-1772471310084-7wpc1","name":"Plancha Lateral","sets":"4","reps":"FALLO","url":"https://www.youtube.com/shorts/_Plb5jSSlX4"}]},{"id":"day-1772471310084-4","label":"Viernes","focus":"Full Body: Resistencia y Finisher de Pierna","exercises":[{"id":"ex-1772471310084-vi4fn","name":"Sentadilla Goblet (con foco en Tempo)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/pSnkNE2TOSQ"},{"id":"ex-1772471310084-x4ebi","name":"Peso Muerto Rumano con Mancuernas (con foco en Tempo)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/tprBo4RKrKM"},{"id":"ex-1772471310084-1s4nx","name":"Circuito de Resistencia (3 Rondas, 60-90s descanso entre rondas)","sets":"3","reps":"Repeticiones específicas por ejercicio","url":""},{"id":"ex-1772471310084-5rpp8","name":"- Patada de Glúteo en Cable (Parte del Circuito)","sets":"1","reps":"10 por lado","url":"https://www.youtube.com/shorts/GL5VBbOttIo"},{"id":"ex-1772471310084-3tan3","name":"- Sentadilla Sumo  Mancuerna (Parte del Circuito)","sets":"1","reps":"10","url":"https://www.youtube.com/shorts/C518TXlNVwk"},{"id":"ex-1772471310084-itkx4","name":"- peso muerto con mancuernas (unilateral)","sets":"1","reps":"10 por lado","url":"https://www.youtube.com/shorts/2N-klSVkrkY"},{"id":"ex-1772471310084-rmpjp","name":"Hip Thrust con barra (con foco en Tempo)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/rVMsqygXtG4"},{"id":"ex-1772471310084-k2c4h","name":"Bicicleta Abdominal","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/K79CoGMh7P0"}]}]}</script>
+    <script id="infit-data-model" type="application/json">{"meta":{"nombre":"ADRIANA","telefono":"7752516065","fechaInicio":"2026-04-13","nivel":4,"lugar":"Commercial Gym","accessType":"full","generatedDate":"2026-04-11T14:51:57.984Z"},"contenido":{"frecuencia":"5 Dias / Semana","estrategia":"Sobrecarga Progresiva y Desarrollo de Potencia","promo":"LA DISCIPLINA ES EL PUENTE ENTRE METAS Y LOGROS.","nutricion":"La nutricion adecuada es el 70% - 80 % de tus resultados.\nCome alimentos reales y evita procesados.","descanso":"Iniciamos con peso ligero y en cada series vamos incrementando peso (de ser posible). Asegúrate de descansar 60-90 segundos entre series . Prioriza 7-9 horas de sueño de calidad para una recuperación óptima y para permitir que tus músculos se reparen y crezcan. Mantén una hidratación adecuada y una nutrición balanceada, rica en proteínas.","calentamiento":""},"dias":[{"id":"day-1775915398003-0","label":"Lunes","focus":"Pierna - Cuádriceps y Glúteos","exercises":[{"id":"ex-1775915398003-0de55","name":"Sentadilla con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/5c6mAD-7G8A"},{"id":"ex-1775915398003-itjct","name":"Prensa de Piernas","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/WAjen1w8kWM"},{"id":"ex-1775915398003-375yt","name":"Extensiones de Cuádriceps","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/SguKyjZ6y9Q"},{"id":"ex-1775915398003-l9tb0","name":"Zancadas con Mancuernas (estáticas)","sets":"4","reps":"10 por pierna + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/OOoMo14FPmM"},{"id":"ex-1775915398003-8lhv8","name":"Elevación de Talones en Máquina (costurera)","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/OaRuiLklB-k"},{"name":"Bicicleta Abdominal","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/K79CoGMh7P0"}]},{"id":"day-1775915398003-1","label":"Martes","focus":"Empuje - Pecho, Hombro y Tríceps","exercises":[{"id":"ex-1775915398003-o6j29","name":"Press Banca horizontal con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/coS6IP6Azig"},{"id":"ex-1775915398003-g854n","name":"Press Militar con Barra de Pie","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/hJrSssiKBXE"},{"id":"ex-1775915398003-ue0sr","name":"Press Inclinado con Mancuernas","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/a64mtMHyPfY"},{"id":"ex-1775915398003-7xpcs","name":"Elevaciones Laterales con Mancuernas","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/76xYddcgfpI"},{"id":"ex-1775915398003-pqjuc","name":"Fondos en banco","sets":"4","reps":"10 + Fallo","url":"https://www.youtube.com/shorts/YUI84YIRHDo"},{"name":"Elevación de Piernas (Tumbada)","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/Be3jdafVWAk"}]},{"id":"day-1775915398003-2","label":"Miercoles","focus":"Tirón - Espalda y Bíceps","exercises":[{"id":"ex-1775915398003-1ul1u","name":"Jalón cerrado en maquina ","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/vbI7E7aPSRU"},{"id":"ex-1775915398003-spkix","name":"Jalón al Pecho en Máquina","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/-MS6Z88wv5I"},{"id":"ex-1775915398003-2kt7i","name":"Remo con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/jHsrWv-0Tgc"},{"id":"ex-1775915398003-qwiee","name":"Remo con Mancuerna a una mano","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/VyJiyek7F3I"},{"id":"ex-1775915398003-73yln","name":"Curl de Bíceps con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/B3Feq30xwpo"},{"name":"Plancha Abdominal","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/_Plb5jSSlX4"}]},{"id":"day-1775915398003-3","label":"Jueves","focus":"Pierna - Femoral y Glúteo","exercises":[{"id":"ex-1775915398003-ommyh","name":"Hip Thrust con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/rVMsqygXtG4"},{"id":"ex-1775915398003-py5e4","name":"Peso Muerto con barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/papo8nyQnMg"},{"id":"ex-1775915398003-d5c1u","name":"Curl Femoral Tumbado","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/nmqG-tIr0hc"},{"id":"ex-1775915398003-amfvh","name":"Patada de Glúteo en Máquina","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/GL5VBbOttIo"},{"id":"ex-1775915398003-yqnhq","name":"Prensa de Piernas (pies más altos y anchos para glúteos)","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/y5ILIYHOI3s"},{"name":"Crunch Abdominal","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/BzYrN4o5X5o"}]},{"id":"day-1775915398003-4","label":"Viernes","focus":"Cuerpo Superior - Empuje y Tirón","exercises":[{"id":"ex-1775915398003-he58a","name":"Press de Banca con Mancuernas","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/QHJKxwxJnJQ"},{"id":"ex-1775915398003-e95f4","name":"Remo Sentado en Máquina","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/own3uEE4wP8"},{"id":"ex-1775915398003-myuy8","name":"Press de Hombros con Mancuernas Sentado","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/L8nA6YET0vE"},{"id":"ex-1775915398003-sktec","name":"Face Pulls con Cuerda","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/lbt7obncwVs"},{"id":"ex-1775915398003-0zrmp","name":"Extensiones de Tríceps con Cuerda","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/pUyF6yvQCXA"},{"id":"ex-1775915398003-jqxix","name":"Curl de Bíceps con Mancuernas Alterno","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/e9nzjkmPRXY"}]}]}</script>
 
-    <!-- ===== PANTALLA DE ACCESO PULIDA (SOLO TELÉFONO) ===== -->
+    <!-- ===== SPLASH SCREEN PWA ===== -->
+    <div id="splash-screen">
+        <div class="splash-logo-container">
+            <div class="splash-ring"></div>
+            <div class="splash-ring"></div>
+            <div class="splash-ring"></div>
+            <img src="https://z-cdn-media.chatglm.cn/files/8156110e-0aff-4d5e-bac8-1605a425dda6.png?auth_key=1874976898-3cdeca9b73ce461a950f348fe864b610-0-f2b4c62b64291ae8d0c26b5707cefc2f" alt="InFit" class="splash-icon">
+        </div>
+        <div class="splash-logo-text">
+            <span style="color: #fff">IN</span><span style="color: #D4AF37">FIT</span>
+        </div>
+        <div class="splash-level">Nivel 4</div>
+        <div class="splash-loader">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- ===== PANTALLA DE ACCESO ===== -->
     <div id="lock-screen">
         <div class="lock-bg-pattern"></div>
         <div class="lock-glow" style="top: 10%; left: -10%;"></div>
@@ -197,7 +412,7 @@
                 </div>
                 <div class="level-badge-mini inline-flex items-center gap-2">
                     <i class="fas fa-trophy text-gold text-xs"></i>
-                    <span class="text-gold text-xs font-bold uppercase tracking-wider">Nivel 3</span>
+                    <span class="text-gold text-xs font-bold uppercase tracking-wider">Nivel 4</span>
                 </div>
                 
             </div>
@@ -210,20 +425,20 @@
             
             <!-- Mensaje de bienvenida -->
             <div class="text-center mb-6">
-                <p class="text-gray-400 text-sm">Ingresa tu número de teléfono para acceder a tu plan de entrenamiento</p>
+                <p class="text-gray-400 text-sm">Ingresa tu numero de telefono para acceder a tu plan de entrenamiento</p>
             </div>
             
-            <!-- Input de teléfono -->
+            <!-- Input de telefono -->
             <div class="lock-input-container">
                 <div class="flex items-center justify-center gap-2 mb-2">
                     <i class="fas fa-phone text-gold text-sm"></i>
-                    <label class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Tu número de teléfono</label>
+                    <label class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Tu numero de telefono</label>
                 </div>
                 <input type="tel" id="phone-input" class="lock-input" placeholder="Ej: 5512345678" maxlength="20">
-                <p class="text-center text-[9px] text-gray-600 mt-2">El número que registraste con tu entrenador</p>
+                <p class="text-center text-[9px] text-gray-600 mt-2">El numero que registraste con tu entrenador</p>
             </div>
             
-            <!-- Botón de acceso -->
+            <!-- Boton de acceso -->
             <button id="unlock-btn" class="lock-btn">
                 <i class="fas fa-unlock mr-2"></i> Acceder a Mi Rutina
             </button>
@@ -233,7 +448,7 @@
         </div>
     </div>
 
-    <!-- WELCOME SCREEN (BIENVENIDA + OBJETIVO) -->
+    <!-- WELCOME SCREEN -->
     <div id="welcome-screen">
         <div class="w-full max-w-md animate-fade-in">
             <!-- Logo y Bienvenida -->
@@ -243,8 +458,8 @@
                     <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold to-yellow-600 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.5)]">
                         <i class="fas fa-hand-sparkles text-3xl text-black"></i>
                     </div>
-                    <h1 class="text-3xl font-heading font-bold text-white uppercase italic">¡Bienvenido, ADRIANA!</h1>
-                    <p class="text-gold text-sm mt-2">Tu plan de entrenamiento está listo</p>
+                    <h1 class="text-3xl font-heading font-bold text-white uppercase italic">Bienvenido, ADRIANA!</h1>
+                    <p class="text-gold text-sm mt-2">Tu plan de entrenamiento esta listo</p>
                 </div>
             </div>
 
@@ -252,8 +467,8 @@
             <div class="glass-panel p-4 rounded-xl mb-6 border-l-4 border-gold">
                 <div class="flex justify-between items-center">
                     <div>
-                        <p class="text-[10px] text-gray-500 uppercase tracking-wider">Tu desafío</p>
-                        <p class="text-white font-heading font-bold text-lg">Nivel 3 • 30 Días</p>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-wider">Tu desafio</p>
+                        <p class="text-white font-heading font-bold text-lg">Nivel 4 - 30 Dias</p>
                     </div>
                     <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
                         <i class="fas fa-trophy text-gold text-xl"></i>
@@ -263,53 +478,53 @@
 
             <!-- Pregunta del Objetivo -->
             <div class="mb-6">
-                <h2 class="text-white font-heading text-xl mb-2 text-center">¿Cuál es tu meta para este ciclo?</h2>
-                <p class="text-gray-500 text-xs text-center mb-4">Elige un objetivo breve y realista que puedas cumplir en 30 días</p>
+                <h2 class="text-white font-heading text-xl mb-2 text-center">Cual es tu meta para este ciclo?</h2>
+                <p class="text-gray-500 text-xs text-center mb-4">Elige un objetivo breve y realista que puedas cumplir en 30 dias</p>
                 
                 <!-- Ejemplos de objetivos -->
                 <div class="grid grid-cols-2 gap-2 mb-4" id="goal-examples">
-                    <button onclick="selectGoal(this, 'No faltar a ningún entrenamiento')" class="example-btn p-3 rounded-lg text-left">
+                    <button onclick="selectGoal(this, 'No faltar a ningun entrenamiento')" class="example-btn p-3 rounded-lg text-left">
                         <i class="fas fa-calendar-check text-gold text-sm mb-1"></i>
                         <p class="text-white text-xs font-bold">Consistencia</p>
-                        <p class="text-gray-500 text-[10px]">No faltar ningún día</p>
+                        <p class="text-gray-500 text-[10px]">No faltar ningun dia</p>
                     </button>
-                    <button onclick="selectGoal(this, 'Mejorar mi técnica en sentadillas')" class="example-btn p-3 rounded-lg text-left">
+                    <button onclick="selectGoal(this, 'Mejorar mi tecnica en sentadillas')" class="example-btn p-3 rounded-lg text-left">
                         <i class="fas fa-bullseye text-gold text-sm mb-1"></i>
-                        <p class="text-white text-xs font-bold">Técnica</p>
+                        <p class="text-white text-xs font-bold">Tecnica</p>
                         <p class="text-gray-500 text-[10px]">Mejorar forma</p>
                     </button>
                     <button onclick="selectGoal(this, 'Aumentar la fuerza en press de banca')" class="example-btn p-3 rounded-lg text-left">
                         <i class="fas fa-dumbbell text-gold text-sm mb-1"></i>
                         <p class="text-white text-xs font-bold">Fuerza</p>
-                        <p class="text-gray-500 text-[10px]">Más peso</p>
+                        <p class="text-gray-500 text-[10px]">Mas peso</p>
                     </button>
-                    <button onclick="selectGoal(this, 'Dormir mínimo 7 horas diarias')" class="example-btn p-3 rounded-lg text-left">
+                    <button onclick="selectGoal(this, 'Dormir minimo 7 horas diarias')" class="example-btn p-3 rounded-lg text-left">
                         <i class="fas fa-moon text-gold text-sm mb-1"></i>
                         <p class="text-white text-xs font-bold">Descanso</p>
-                        <p class="text-gray-500 text-[10px]">Mejor recuperación</p>
+                        <p class="text-gray-500 text-[10px]">Mejor recuperacion</p>
                     </button>
-                    <button onclick="selectGoal(this, 'Sentirme con más energía todo el día')" class="example-btn p-3 rounded-lg text-left">
+                    <button onclick="selectGoal(this, 'Sentirme con mas energia todo el dia')" class="example-btn p-3 rounded-lg text-left">
                         <i class="fas fa-bolt text-gold text-sm mb-1"></i>
-                        <p class="text-white text-xs font-bold">Energía</p>
+                        <p class="text-white text-xs font-bold">Energia</p>
                         <p class="text-gray-500 text-[10px]">Vitalidad</p>
                     </button>
                     <button onclick="selectGoal(this, 'Mejorar mi flexibilidad y movilidad')" class="example-btn p-3 rounded-lg text-left">
                         <i class="fas fa-child text-gold text-sm mb-1"></i>
                         <p class="text-white text-xs font-bold">Movilidad</p>
-                        <p class="text-gray-500 text-[10px]">Más flexible</p>
+                        <p class="text-gray-500 text-[10px]">Mas flexible</p>
                     </button>
                 </div>
 
                 <!-- Input personalizado -->
                 <div class="relative">
                     <input type="text" id="custom-goal" class="w-full p-4 rounded-xl bg-black/50 border border-gray-700 text-white text-sm focus:border-gold focus:outline-none transition" placeholder="O escribe tu propio objetivo...">
-                    <p class="text-[9px] text-gray-600 mt-2 text-center"><i class="fas fa-lightbulb text-yellow-500 mr-1"></i> Tip: Objetivos claros = Mayor probabilidad de éxito</p>
+                    <p class="text-[9px] text-gray-600 mt-2 text-center"><i class="fas fa-lightbulb text-yellow-500 mr-1"></i> Tip: Objetivos claros = Mayor probabilidad de exito</p>
                 </div>
             </div>
 
-            <!-- Botón Continuar -->
+            <!-- Boton Continuar -->
             <button onclick="saveGoalAndContinue()" id="continue-btn" class="w-full py-4 bg-gradient-to-r from-gold to-yellow-600 rounded-xl text-black font-heading font-bold uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                <i class="fas fa-rocket mr-2"></i> Comenzar Mi Transformación
+                <i class="fas fa-rocket mr-2"></i> Comenzar Mi Transformacion
             </button>
         </div>
     </div>
@@ -317,6 +532,17 @@
     <!-- ACCESS BLOCKED OVERLAY -->
     <div id="access-blocked"></div>
     <div id="access-expired"></div>
+
+    <!-- PWA INSTALL BANNER -->
+    <div id="pwa-install-banner">
+        <img src="https://z-cdn-media.chatglm.cn/files/8156110e-0aff-4d5e-bac8-1605a425dda6.png?auth_key=1874976898-3cdeca9b73ce461a950f348fe864b610-0-f2b4c62b64291ae8d0c26b5707cefc2f" alt="InFit" class="pwa-banner-icon">
+        <div class="pwa-banner-text">
+            <h4>Instalar InFit</h4>
+            <p>Agrega a tu pantalla de inicio</p>
+        </div>
+        <button id="pwa-install-btn" class="pwa-banner-btn">Instalar</button>
+        <button id="pwa-banner-close" class="pwa-banner-close"><i class="fas fa-times"></i></button>
+    </div>
 
     <!-- APP CONTENT -->
     <div id="app-content" class="opacity-0 transition-opacity duration-1000">
@@ -329,7 +555,7 @@
             <div class="absolute top-6 right-6 flex flex-col items-end">
                 <h1 class="text-xl font-heading font-bold text-white leading-none brand-logo-client opacity-80">IN<span class="text-gold">FIT</span></h1>
                 <div class="mt-1 flex gap-2">
-                    <div class="px-2 py-0.5 bg-gold text-black text-[9px] font-bold uppercase rounded tracking-wider shadow-lg">Nivel 3</div>
+                    <div class="px-2 py-0.5 bg-gold text-black text-[9px] font-bold uppercase rounded tracking-wider shadow-lg">Nivel 4</div>
                     <div id="end-date-badge" class="px-2 py-0.5 bg-black/50 border border-white/20 text-white text-[9px] font-bold uppercase rounded tracking-wider"></div>
                 </div>
             </div>
@@ -363,7 +589,7 @@
             <section id="view-diary" class="hidden animate-fade-in space-y-6">
                 <div class="text-center mb-4">
                     <h2 class="text-2xl font-heading font-bold text-white uppercase italic">Modo Carrera</h2>
-                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Camino al Nivel 4</p>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Camino al Nivel 5</p>
                 </div>
                 
                 <div class="glass-panel p-5 rounded-xl text-center border-l-4 border-gold relative overflow-hidden">
@@ -373,7 +599,7 @@
                     </div>
                     
                     <div class="bg-black/40 rounded-lg p-3 border border-white/5 mb-2">
-                        <p id="dynamic-motivation" class="text-xs text-gray-200 italic font-medium leading-relaxed">"Cargando motivación..."</p>
+                        <p id="dynamic-motivation" class="text-xs text-gray-200 italic font-medium leading-relaxed">"Cargando motivacion..."</p>
                     </div>
                     
                     <p id="cycle-status-text" class="text-[9px] text-gray-500 text-right mt-2">Semana Actual</p>
@@ -382,9 +608,9 @@
                 <div id="training-grid" class="grid grid-cols-5 gap-3"></div>
                 
                 <div class="text-center mt-8 p-4 border border-dashed border-gray-800 rounded-xl">
-                    <p class="text-[9px] text-gray-500 uppercase mb-2">Próximo Hito</p>
+                    <p class="text-[9px] text-gray-500 uppercase mb-2">Proximo Hito</p>
                     <button class="text-gray-600 font-heading text-lg uppercase flex items-center justify-center gap-2 w-full cursor-not-allowed opacity-50">
-                        <i class="fas fa-lock"></i> Nivel 4
+                        <i class="fas fa-lock"></i> Nivel 5
                     </button>
                     <p class="text-[8px] text-gray-600 mt-2">Disponible al completar el ciclo</p>
                 </div>
@@ -392,18 +618,17 @@
 
             <section id="view-pillars" class="hidden animate-fade-in space-y-4">
                 <div class="text-center mb-4">
-                    <h2 class="text-2xl font-heading font-bold text-white uppercase italic">Filosofía</h2>
-                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Nutrición & Mente</p>
+                    <h2 class="text-2xl font-heading font-bold text-white uppercase italic">Filosofia</h2>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Nutricion & Mente</p>
                 </div>
                 <div class="glass-panel p-5 rounded-2xl border-l-2 border-green-500">
-                    <h3 class="font-heading text-lg text-white mb-2 uppercase flex items-center"><i class="fas fa-utensils text-green-500 mr-2 text-sm"></i> Fuel / Nutrición</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed whitespace-pre-line">La nutrición adecuada es el 70% - 80 % de tus resultados.
-Come alimentos reales y evita procesados.
-En INFIT también te podemos apoyar con tu plan de alimentación. </p>
+                    <h3 class="font-heading text-lg text-white mb-2 uppercase flex items-center"><i class="fas fa-utensils text-green-500 mr-2 text-sm"></i> Fuel / Nutricion</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed whitespace-pre-line">La nutricion adecuada es el 70% - 80 % de tus resultados.
+Come alimentos reales y evita procesados.</p>
                 </div>
                 <div class="glass-panel p-5 rounded-2xl border-l-2 border-blue-500">
                     <h3 class="font-heading text-lg text-white mb-2 uppercase flex items-center"><i class="fas fa-battery-full text-blue-500 mr-2 text-sm"></i> Recovery</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed whitespace-pre-line">Asegúrate de dormir 7-9 horas de calidad cada noche. Considera estiramientos ligeros o caminatas activas en tus días de descanso para mejorar la recuperación y la circulación. Escucha a tu cuerpo y ajusta el volumen si sientes fatiga excesiva.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed whitespace-pre-line">Iniciamos con peso ligero y en cada series vamos incrementando peso (de ser posible). Asegúrate de descansar 60-90 segundos entre series . Prioriza 7-9 horas de sueño de calidad para una recuperación óptima y para permitir que tus músculos se reparen y crezcan. Mantén una hidratación adecuada y una nutrición balanceada, rica en proteínas.</p>
                 </div>
             </section>
         </main>
@@ -411,27 +636,32 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
         <div class="nav-dock">
             <button onclick="switchView('training')" id="btn-training" class="dock-item active"><i class="fas fa-dumbbell"></i> Entreno</button>
             <button onclick="switchView('diary')" id="btn-diary" class="dock-item"><i class="fas fa-calendar-alt"></i> Diario</button>
-            <button onclick="switchView('pillars')" id="btn-pillars" class="dock-item"><i class="fas fa-book-open"></i> Filosofía</button>
+            <button onclick="switchView('pillars')" id="btn-pillars" class="dock-item"><i class="fas fa-book-open"></i> Filosofia</button>
         </div>
     </div>
 
     <script>
-        const plan = {"meta":{"nombre":"ADRIANA","telefono":"7752516065","fechaInicio":"2026-03-02","nivel":3,"lugar":"Commercial Gym","accessType":"full","generatedDate":"2026-03-02T18:34:18.745Z"},"contenido":{"frecuencia":"5 Días / Semana","estrategia":"Adaptación Neuromuscular e Hipertrófica por Frecuencia para Definición","promo":"LA DISCIPLINA ES EL PUENTE ENTRE METAS Y LOGROS.","nutricion":"La nutrición adecuada es el 70% - 80 % de tus resultados.\nCome alimentos reales y evita procesados.\nEn INFIT también te podemos apoyar con tu plan de alimentación. ","descanso":"Asegúrate de dormir 7-9 horas de calidad cada noche. Considera estiramientos ligeros o caminatas activas en tus días de descanso para mejorar la recuperación y la circulación. Escucha a tu cuerpo y ajusta el volumen si sientes fatiga excesiva.","calentamiento":""},"dias":[{"id":"day-1772471310084-0","label":"Lunes","focus":"Full Body: Pierna Frontal Dominante","exercises":[{"id":"ex-1772471310084-b2sjf","name":"Sentadilla Goblet","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/pSnkNE2TOSQ"},{"id":"ex-1772471310084-n1a0q","name":"Puente de Glúteo (Glute Bridge)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/Cxp6D7LEqjM"},{"id":"ex-1772471310084-8sram","name":"Press de Banca con Mancuernas (Plano)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/QHJKxwxJnJQ"},{"id":"ex-1772471310084-gs60u","name":"Jalón al Pecho en Máquina (Agarre Neutro)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/K4CgUrWaEL4"},{"id":"ex-1772471310084-a45co","name":"Press Militar con Mancuernas (De pie)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/xVFamrgzuCE"},{"id":"ex-1772471310084-jvmwt","name":"Plancha Abdominal","sets":"4","reps":"FALLO","url":"https://www.youtube.com/shorts/_Plb5jSSlX4"}]},{"id":"day-1772471310084-1","label":"Martes","focus":"Full Body: Pierna Posterior y Glúteo Dominante","exercises":[{"id":"ex-1772471310084-9mx73","name":"Peso Muerto Rumano con Mancuernas ","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/tprBo4RKrKM"},{"id":"ex-1772471310084-agib1","name":"Prensa de Piernas","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/WAjen1w8kWM"},{"id":"ex-1772471310084-uv3d2","name":"Flexiones de Rodillas (Modificadas)","sets":"4","reps":"10-15","url":"https://www.youtube.com/shorts/YN5pE2JmzHM"},{"id":"ex-1772471310084-xdwb6","name":"Curl de Bíceps con Mancuernas","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/r-BR6kfLUT4"},{"id":"ex-1772471310084-hglx0","name":"Remo Sentado en Máquina (Agarre Cerrado)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/own3uEE4wP8"},{"id":"ex-1772471310084-89jxe","name":"Crunch Abdominal","sets":"4","reps":"FALLO","url":"https://www.youtube.com/shorts/BzYrN4o5X5o"}]},{"id":"day-1772471310084-2","label":"Miércoles","focus":"Full Body: Pierna Frontal Énfasis","exercises":[{"id":"ex-1772471310084-5tkpu","name":"Zancadas con Mancuernas (Estáticas)","sets":"4","reps":"8-10 por pierna","url":"https://www.youtube.com/shorts/OOoMo14FPmM"},{"id":"ex-1772471310084-hf5qu","name":"Curl Femoral en Máquina (Acostado)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/nmqG-tIr0hc"},{"id":"ex-1772471310084-ty5zo","name":"Extensiones de Tríceps (Copa) Mancuerna","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/LvYIcAEy1Ws"},{"id":"ex-1772471310084-pjlh9","name":"Elevaciones Laterales con Mancuernas","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/dd9xo-_ahCg"},{"id":"ex-1772471310084-ed3u3","name":"Remo con Mancuerna a Una Mano","sets":"4","reps":"10-12 por brazo","url":"https://www.youtube.com/shorts/VyJiyek7F3I"},{"id":"ex-1772471310084-l3tzb","name":"Elevación de Piernas (Tumbada)","sets":"4","reps":"FALLO","url":"https://www.youtube.com/shorts/Be3jdafVWAk"}]},{"id":"day-1772471310084-3","label":"Jueves","focus":"Full Body","exercises":[{"id":"ex-1772471310084-o8ovj","name":"Jalón al Pecho en Máquina (Agarre Ancho)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/9PfMG7pjIYU"},{"id":"ex-1772471310084-a6vqf","name":"Jalón al Pecho en Máquina (Cerrado)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/05K8X5wb4TM"},{"id":"ex-1772471310084-gtpba","name":"Press inclinado","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/a64mtMHyPfY"},{"id":"ex-1772471310084-q53nj","name":"Aperturas con Mancuernas en Banco Plano","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/WvOpBoKbaaY"},{"id":"ex-1772471310084-hs91b","name":"Press de Hombros Sentado con Mancuernas","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/L8nA6YET0vE"},{"id":"ex-1772471310084-7wpc1","name":"Plancha Lateral","sets":"4","reps":"FALLO","url":"https://www.youtube.com/shorts/_Plb5jSSlX4"}]},{"id":"day-1772471310084-4","label":"Viernes","focus":"Full Body: Resistencia y Finisher de Pierna","exercises":[{"id":"ex-1772471310084-vi4fn","name":"Sentadilla Goblet (con foco en Tempo)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/pSnkNE2TOSQ"},{"id":"ex-1772471310084-x4ebi","name":"Peso Muerto Rumano con Mancuernas (con foco en Tempo)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/tprBo4RKrKM"},{"id":"ex-1772471310084-1s4nx","name":"Circuito de Resistencia (3 Rondas, 60-90s descanso entre rondas)","sets":"3","reps":"Repeticiones específicas por ejercicio","url":""},{"id":"ex-1772471310084-5rpp8","name":"- Patada de Glúteo en Cable (Parte del Circuito)","sets":"1","reps":"10 por lado","url":"https://www.youtube.com/shorts/GL5VBbOttIo"},{"id":"ex-1772471310084-3tan3","name":"- Sentadilla Sumo  Mancuerna (Parte del Circuito)","sets":"1","reps":"10","url":"https://www.youtube.com/shorts/C518TXlNVwk"},{"id":"ex-1772471310084-itkx4","name":"- peso muerto con mancuernas (unilateral)","sets":"1","reps":"10 por lado","url":"https://www.youtube.com/shorts/2N-klSVkrkY"},{"id":"ex-1772471310084-rmpjp","name":"Hip Thrust con barra (con foco en Tempo)","sets":"4","reps":"12","url":"https://www.youtube.com/shorts/rVMsqygXtG4"},{"id":"ex-1772471310084-k2c4h","name":"Bicicleta Abdominal","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/K79CoGMh7P0"}]}]};
+        const plan = {"meta":{"nombre":"ADRIANA","telefono":"7752516065","fechaInicio":"2026-04-13","nivel":4,"lugar":"Commercial Gym","accessType":"full","generatedDate":"2026-04-11T14:51:57.984Z"},"contenido":{"frecuencia":"5 Dias / Semana","estrategia":"Sobrecarga Progresiva y Desarrollo de Potencia","promo":"LA DISCIPLINA ES EL PUENTE ENTRE METAS Y LOGROS.","nutricion":"La nutricion adecuada es el 70% - 80 % de tus resultados.\nCome alimentos reales y evita procesados.","descanso":"Iniciamos con peso ligero y en cada series vamos incrementando peso (de ser posible). Asegúrate de descansar 60-90 segundos entre series . Prioriza 7-9 horas de sueño de calidad para una recuperación óptima y para permitir que tus músculos se reparen y crezcan. Mantén una hidratación adecuada y una nutrición balanceada, rica en proteínas.","calentamiento":""},"dias":[{"id":"day-1775915398003-0","label":"Lunes","focus":"Pierna - Cuádriceps y Glúteos","exercises":[{"id":"ex-1775915398003-0de55","name":"Sentadilla con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/5c6mAD-7G8A"},{"id":"ex-1775915398003-itjct","name":"Prensa de Piernas","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/WAjen1w8kWM"},{"id":"ex-1775915398003-375yt","name":"Extensiones de Cuádriceps","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/SguKyjZ6y9Q"},{"id":"ex-1775915398003-l9tb0","name":"Zancadas con Mancuernas (estáticas)","sets":"4","reps":"10 por pierna + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/OOoMo14FPmM"},{"id":"ex-1775915398003-8lhv8","name":"Elevación de Talones en Máquina (costurera)","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/OaRuiLklB-k"},{"name":"Bicicleta Abdominal","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/K79CoGMh7P0"}]},{"id":"day-1775915398003-1","label":"Martes","focus":"Empuje - Pecho, Hombro y Tríceps","exercises":[{"id":"ex-1775915398003-o6j29","name":"Press Banca horizontal con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/coS6IP6Azig"},{"id":"ex-1775915398003-g854n","name":"Press Militar con Barra de Pie","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/hJrSssiKBXE"},{"id":"ex-1775915398003-ue0sr","name":"Press Inclinado con Mancuernas","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/a64mtMHyPfY"},{"id":"ex-1775915398003-7xpcs","name":"Elevaciones Laterales con Mancuernas","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/76xYddcgfpI"},{"id":"ex-1775915398003-pqjuc","name":"Fondos en banco","sets":"4","reps":"10 + Fallo","url":"https://www.youtube.com/shorts/YUI84YIRHDo"},{"name":"Elevación de Piernas (Tumbada)","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/Be3jdafVWAk"}]},{"id":"day-1775915398003-2","label":"Miercoles","focus":"Tirón - Espalda y Bíceps","exercises":[{"id":"ex-1775915398003-1ul1u","name":"Jalón cerrado en maquina ","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/vbI7E7aPSRU"},{"id":"ex-1775915398003-spkix","name":"Jalón al Pecho en Máquina","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/-MS6Z88wv5I"},{"id":"ex-1775915398003-2kt7i","name":"Remo con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/jHsrWv-0Tgc"},{"id":"ex-1775915398003-qwiee","name":"Remo con Mancuerna a una mano","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/VyJiyek7F3I"},{"id":"ex-1775915398003-73yln","name":"Curl de Bíceps con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/B3Feq30xwpo"},{"name":"Plancha Abdominal","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/_Plb5jSSlX4"}]},{"id":"day-1775915398003-3","label":"Jueves","focus":"Pierna - Femoral y Glúteo","exercises":[{"id":"ex-1775915398003-ommyh","name":"Hip Thrust con Barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/rVMsqygXtG4"},{"id":"ex-1775915398003-py5e4","name":"Peso Muerto con barra","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/papo8nyQnMg"},{"id":"ex-1775915398003-d5c1u","name":"Curl Femoral Tumbado","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/nmqG-tIr0hc"},{"id":"ex-1775915398003-amfvh","name":"Patada de Glúteo en Máquina","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/GL5VBbOttIo"},{"id":"ex-1775915398003-yqnhq","name":"Prensa de Piernas (pies más altos y anchos para glúteos)","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/y5ILIYHOI3s"},{"name":"Crunch Abdominal","sets":"4","reps":"Fallo","url":"https://www.youtube.com/shorts/BzYrN4o5X5o"}]},{"id":"day-1775915398003-4","label":"Viernes","focus":"Cuerpo Superior - Empuje y Tirón","exercises":[{"id":"ex-1775915398003-he58a","name":"Press de Banca con Mancuernas","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/QHJKxwxJnJQ"},{"id":"ex-1775915398003-e95f4","name":"Remo Sentado en Máquina","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/own3uEE4wP8"},{"id":"ex-1775915398003-myuy8","name":"Press de Hombros con Mancuernas Sentado","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/L8nA6YET0vE"},{"id":"ex-1775915398003-sktec","name":"Face Pulls con Cuerda","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/lbt7obncwVs"},{"id":"ex-1775915398003-0zrmp","name":"Extensiones de Tríceps con Cuerda","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/pUyF6yvQCXA"},{"id":"ex-1775915398003-jqxix","name":"Curl de Bíceps con Mancuernas Alterno","sets":"4","reps":"12,10,8 + Fallo (bajando peso al 50-60%)","url":"https://www.youtube.com/shorts/e9nzjkmPRXY"}]}]};
         const IS_TRIAL_MODE = plan.meta.accessType === 'trial';
         const TRIAL_HOURS = 24;
         const REGISTERED_PHONE = "7752516065";
         
-        // LLAVE MAESTRA DEL ENTRENADOR - CAMBIAR AÑO SEGÚN CORRESPONDA
+        // LLAVE MAESTRA DEL ENTRENADOR
         const MASTER_KEY = "INFIT2026PRO";
         
-        const CLIENT_ID = plan.meta.nombre.toLowerCase().replace(/[^a-z0-9]/g, '_') + '_' + REGISTERED_PHONE.slice(-4);
+        // Array de dias de la semana para mostrar en el selector
+        const DIAS_SEMANA_CLIENTE = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+        
+        const CLIENT_ID = "adriana_6065";
         const DEVICE_KEY = 'infit_device_' + CLIENT_ID;
         const TRIAL_START_KEY = 'infit_trial_' + CLIENT_ID;
         const GOAL_KEY = 'infit_goal_' + CLIENT_ID;
         const SESSION_KEY = 'infit_session_' + CLIENT_ID;
+        const PWA_DISMISSED_KEY = 'infit_pwa_dismissed_' + CLIENT_ID;
         
         let selectedGoal = '';
         let activeDayIdx = 0;
+        let deferredPrompt = null;
         
         const startDate = new Date(plan.meta.fechaInicio);
         const endDate = new Date(startDate);
@@ -454,6 +684,108 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
         let db;
         let userId; 
         let trainingData = Array(30).fill(false);
+
+        // ===== SERVICE WORKER REGISTRATION =====
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                const CACHE_NAME = 'infit-vadriana_6065';
+                const ICON_192 = 'https://z-cdn-media.chatglm.cn/files/8156110e-0aff-4d5e-bac8-1605a425dda6.png?auth_key=1874976898-3cdeca9b73ce461a950f348fe864b610-0-f2b4c62b64291ae8d0c26b5707cefc2f';
+                const ICON_512 = 'https://z-cdn-media.chatglm.cn/files/449e8709-e672-4f6d-8340-6a3d63097518.png?auth_key=1874976898-52165aec28274453bb9abb302ff0d696-0-d202661facd61109076619ee0ba635f2';
+                
+                const urlsToCache = [
+                    './',
+                    'https://cdn.tailwindcss.com',
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+                    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap',
+                    ICON_192,
+                    ICON_512
+                ];
+                
+                self.addEventListener('install', event => {
+                    self.skipWaiting();
+                });
+                
+                self.addEventListener('activate', event => {
+                    event.waitUntil(clients.claim());
+                });
+                
+                self.addEventListener('fetch', event => {
+                    event.respondWith(
+                        caches.match(event.request)
+                            .then(response => response || fetch(event.request))
+                            .catch(() => caches.match('./'))
+                    );
+                });
+            `;
+            
+            const swBlob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(swBlob);
+            
+            navigator.serviceWorker.register(swUrl).catch(err => console.log('SW registration skipped'));
+        }
+
+        // ===== PWA INSTALL PROMPT =====
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            if (!localStorage.getItem(PWA_DISMISSED_KEY)) {
+                setTimeout(() => {
+                    document.getElementById('pwa-install-banner').classList.add('show');
+                }, 3000);
+            }
+        });
+        
+        document.getElementById('pwa-install-btn')?.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    document.getElementById('pwa-install-banner').classList.remove('show');
+                }
+                deferredPrompt = null;
+            } else {
+                // iOS instructions
+                Swal.fire({
+                    title: '<span style="color:#D4AF37">Instalar App</span>',
+                    html: `
+                        <div class="text-left">
+                            <p class="text-gray-300 text-sm mb-4">Para instalar en iOS:</p>
+                            <ol class="text-gray-400 text-xs space-y-2">
+                                <li>1. Toca el boton <span class="text-gold">Compartir</span> <i class="fas fa-share-square text-gold"></i></li>
+                                <li>2. Desliza y selecciona <span class="text-gold">Agregar a Pantalla de Inicio</span></li>
+                                <li>3. Toca <span class="text-gold">Agregar</span> en la esquina superior derecha</li>
+                            </ol>
+                        </div>
+                    `,
+                    confirmButtonText: 'ENTENDIDO',
+                    confirmButtonColor: '#D4AF37',
+                    background: '#111',
+                    color: '#fff'
+                });
+            }
+        });
+        
+        document.getElementById('pwa-banner-close')?.addEventListener('click', () => {
+            document.getElementById('pwa-install-banner').classList.remove('show');
+            localStorage.setItem(PWA_DISMISSED_KEY, 'true');
+        });
+
+        // ===== SPLASH SCREEN LOGIC =====
+        function hideSplash() {
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                splash.classList.add('hidden');
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        // Hide splash after minimum display time
+        setTimeout(() => {
+            hideSplash();
+        }, 2000);
 
         // --- FUNCIONES DE SEGURIDAD ---
         function generateDeviceFingerprint() {
@@ -509,13 +841,12 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
             }
         }
         
-        function normalizePhone(phone) { return phone.replace(/\D/g, ''); }
+        function normalizePhone(phone) { return phone.replace(/\\D/g, ''); }
 
-        // --- HABILITAR BOTÓN SIEMPRE (para permitir llave maestra) ---
+        // --- HABILITAR BOTON SIEMPRE ---
         const phoneInput = document.getElementById('phone-input');
         const unlockBtn = document.getElementById('unlock-btn');
         
-        // Permitir acceso en cualquier momento
         unlockBtn.addEventListener('click', verifyAndUnlock);
         
         phoneInput.addEventListener('keypress', (e) => { 
@@ -524,7 +855,7 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
             }
         });
 
-        // === VERIFICAR SESIÓN ACTIVA AL CARGAR ===
+        // === VERIFICAR SESION ACTIVA AL CARGAR ===
         async function checkExistingSession() {
             userId = plan.meta.nombre.toLowerCase().replace(/[^a-z0-9]/g, '');
             initFirebase();
@@ -532,7 +863,7 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
             await new Promise(r => setTimeout(r, 500));
             
             if (!hasActiveSession()) {
-                console.log('🔒 No hay sesión local activa');
+                console.log('No hay sesion local activa');
                 return false;
             }
             
@@ -540,13 +871,13 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
             const firebaseDeviceId = await checkFirebaseDevice();
             
             if (firebaseDeviceId && firebaseDeviceId !== currentDeviceId) {
-                console.log('⚠️ Dispositivo no coincide con Firebase');
+                console.log('Dispositivo no coincide con Firebase');
                 localStorage.removeItem(SESSION_KEY);
                 localStorage.removeItem(DEVICE_KEY);
                 return false;
             }
             
-            console.log('✅ Sesión verificada en Firebase');
+            console.log('Sesion verificada en Firebase');
             document.getElementById('lock-screen').style.display = 'none';
             updateLastAccess();
             unlockApp();
@@ -557,24 +888,24 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
             await checkExistingSession();
         }, 200);
         
-        // === VERIFICACIÓN CON TELÉFONO O LLAVE MAESTRA ===
+        // === VERIFICACION CON TELEFONO O LLAVE MAESTRA ===
         async function verifyAndUnlock() {
             const input = document.getElementById('phone-input').value.trim().toUpperCase();
             const errorMsg = document.getElementById('error-msg');
             errorMsg.classList.add('hidden');
             
-            // ===== VERIFICACIÓN DE LLAVE MAESTRA (ENTRENADOR) =====
+            // VERIFICACION DE LLAVE MAESTRA (ENTRENADOR)
             if (input === MASTER_KEY) {
-                console.log('🔓 Acceso de entrenador autorizado con llave maestra');
+                console.log('Acceso de entrenador autorizado con llave maestra');
                 unlockApp();
                 return;
             }
             
-            // ===== VERIFICACIÓN NORMAL PARA CLIENTES =====
+            // VERIFICACION NORMAL PARA CLIENTES
             const phoneInputValue = normalizePhone(document.getElementById('phone-input').value);
             
             if (phoneInputValue !== REGISTERED_PHONE) {
-                errorMsg.innerHTML = '<i class="fas fa-phone-slash mr-1"></i> Teléfono no registrado. Contacta a tu entrenador.';
+                errorMsg.innerHTML = '<i class="fas fa-phone-slash mr-1"></i> Telefono no registrado. Contacta a tu entrenador.';
                 errorMsg.classList.remove('hidden');
                 return;
             }
@@ -583,12 +914,12 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
             const firebaseDeviceId = await checkFirebaseDevice();
             
             if (firebaseDeviceId === null) {
-                console.log('🆕 Primer acceso - Registrando dispositivo');
+                console.log('Primer acceso - Registrando dispositivo');
                 
                 try {
                     await registerDeviceInFirebase(currentDeviceId);
                 } catch (e) {
-                    errorMsg.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> Error de conexión. Intenta de nuevo.';
+                    errorMsg.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> Error de conexion. Intenta de nuevo.';
                     errorMsg.classList.remove('hidden');
                     return;
                 }
@@ -598,7 +929,7 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
                 showWelcomeScreen();
                 
             } else if (firebaseDeviceId === currentDeviceId) {
-                console.log('✅ Dispositivo verificado en Firebase');
+                console.log('Dispositivo verificado en Firebase');
                 updateLastAccess();
                 
                 localStorage.setItem(SESSION_KEY, JSON.stringify({
@@ -609,7 +940,7 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
                 unlockApp();
                 
             } else {
-                console.log('❌ Dispositivo no autorizado en Firebase');
+                console.log('Dispositivo no autorizado en Firebase');
                 showDeviceBlocked();
             }
         }
@@ -700,13 +1031,13 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
                             <i class="fas fa-ban text-4xl text-red-500"></i>
                         </div>
                         <h2 class="text-2xl font-heading font-bold text-white uppercase italic mb-2">Acceso Bloqueado</h2>
-                        <p class="text-red-400 text-sm mb-6">Este plan ya está activo en otro dispositivo</p>
+                        <p class="text-red-400 text-sm mb-6">Este plan ya esta activo en otro dispositivo</p>
                         <div class="glass-panel p-5 rounded-xl max-w-sm mb-6 text-left border-l-4 border-red-500">
                             <h3 class="text-white font-bold mb-2"><i class="fas fa-shield-alt text-red-400 mr-2"></i>Por seguridad</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Tu rutina está protegida y solo puede accederse desde un dispositivo autorizado. Si cambiaste de dispositivo, contacta a tu entrenador.</p>
+                            <p class="text-gray-400 text-sm leading-relaxed">Tu rutina esta protegida y solo puede accederse desde un dispositivo autorizado. Si cambiaste de dispositivo, contacta a tu entrenador.</p>
                         </div>
                         <div class="bg-gray-900 p-4 rounded-xl max-w-sm">
-                            <p class="text-gray-500 text-xs mb-2">¿Necesitas ayuda?</p>
+                            <p class="text-gray-500 text-xs mb-2">Necesitas ayuda?</p>
                             <p class="text-gold text-sm font-bold"><i class="fas fa-headset mr-1"></i> Contacta a tu entrenador</p>
                         </div>
                     </div>
@@ -738,11 +1069,11 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
                         <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold to-yellow-600 flex items-center justify-center shadow-[0_0_40px_rgba(212,175,55,0.5)]">
                             <i class="fas fa-lock text-4xl text-black"></i>
                         </div>
-                        <h2 class="text-3xl font-heading font-bold text-white uppercase italic mb-2">¡Tiempo de Prueba Finalizado!</h2>
+                        <h2 class="text-3xl font-heading font-bold text-white uppercase italic mb-2">Tiempo de Prueba Finalizado!</h2>
                         <p class="text-gold text-sm uppercase tracking-widest mb-6">Tu vista previa de 24 horas ha expirado</p>
                         <div class="glass-panel p-6 rounded-xl max-w-sm mb-8 text-left border-l-4 border-gold">
-                            <h3 class="text-white font-bold mb-2 text-lg"><i class="fas fa-star text-gold mr-2"></i>¿Te gustó lo que viste?</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Este plan fue diseñado específicamente para ti. Únete como cliente activo.</p>
+                            <h3 class="text-white font-bold mb-2 text-lg"><i class="fas fa-star text-gold mr-2"></i>Te gusto lo que viste?</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Este plan fue disenado especificamente para ti. Unete como cliente activo.</p>
                         </div>
                         <button onclick="contactForSubscription()" class="w-full max-w-sm py-4 bg-gradient-to-r from-gold to-yellow-600 rounded-xl text-black font-heading font-bold uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(212,175,55,0.4)]">
                             <i class="fas fa-crown mr-2"></i> Activar Mi Plan Completo
@@ -762,14 +1093,14 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
                         <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold to-yellow-600 flex items-center justify-center shadow-[0_0_40px_rgba(212,175,55,0.5)]">
                             <i class="fas fa-trophy text-4xl text-black"></i>
                         </div>
-                        <h2 class="text-3xl font-heading font-bold text-white uppercase italic mb-2">¡Felicidades, Campeón!</h2>
-                        <p class="text-gold text-sm uppercase tracking-widest mb-6">Has completado el Nivel 3</p>
+                        <h2 class="text-3xl font-heading font-bold text-white uppercase italic mb-2">Felicidades, Campeon!</h2>
+                        <p class="text-gold text-sm uppercase tracking-widest mb-6">Has completado el Nivel 4</p>
                         <div class="glass-panel p-6 rounded-xl max-w-sm mb-4 text-left border-l-4 border-gold">
-                            <h3 class="text-white font-bold mb-2 text-lg"><i class="fas fa-arrow-up text-gold mr-2"></i>Siguiente: Nivel 4</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Tu cuerpo está listo para el siguiente desafío.</p>
+                            <h3 class="text-white font-bold mb-2 text-lg"><i class="fas fa-arrow-up text-gold mr-2"></i>Siguiente: Nivel 5</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Tu cuerpo esta listo para el siguiente desafio.</p>
                         </div>
                         <button onclick="contactForUpgrade()" class="w-full max-w-sm py-4 bg-gradient-to-r from-gold to-yellow-600 rounded-xl text-black font-heading font-bold uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(212,175,55,0.4)]">
-                            <i class="fas fa-rocket mr-2"></i> Desbloquear Nivel 4
+                            <i class="fas fa-rocket mr-2"></i> Desbloquear Nivel 5
                         </button>
                         <button onclick="closeExpired()" class="mt-4 text-gray-500 text-xs uppercase hover:text-white"><i class="fas fa-history mr-1"></i> Ver historial</button>
                     </div>
@@ -789,8 +1120,8 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
         }
 
         function closeExpired() { document.getElementById('access-expired').style.display = 'none'; }
-        function contactForSubscription() { Swal.fire({ title: '<span class="text-gold">¡Excelente!</span>', html: '<p class="text-gray-300">Contacta a tu entrenador para activar tu plan.</p>', confirmButtonText: 'ENTENDIDO', confirmButtonColor: '#D4AF37', background: '#111', color: '#fff' }); }
-        function contactForUpgrade() { Swal.fire({ title: '<span class="text-gold">Siguiente Nivel</span>', html: '<p class="text-gray-300">Solicita tu actualización al Nivel 4</p>', confirmButtonText: 'CONTACTAR ENTRENADOR', confirmButtonColor: '#D4AF37', background: '#111', color: '#fff' }); }
+        function contactForSubscription() { Swal.fire({ title: '<span class="text-gold">Excelente!</span>', html: '<p class="text-gray-300">Contacta a tu entrenador para activar tu plan.</p>', confirmButtonText: 'ENTENDIDO', confirmButtonColor: '#D4AF37', background: '#111', color: '#fff' }); }
+        function contactForUpgrade() { Swal.fire({ title: '<span class="text-gold">Siguiente Nivel</span>', html: '<p class="text-gray-300">Solicita tu actualizacion al Nivel 5</p>', confirmButtonText: 'CONTACTAR ENTRENADOR', confirmButtonColor: '#D4AF37', background: '#111', color: '#fff' }); }
 
         function updateLevelUI() {
             const remaining = 30 - dayOfCycle;
@@ -826,8 +1157,8 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
                  statusText.innerText = "ESPERANDO INICIO";
                  bar.style.width = "0%";
             } else {
-                statusText.innerText = `DÍA ${dayOfCycle} DE 30`;
-                diaryText.innerText = `Estás en el día ${dayOfCycle} del ciclo.`;
+                statusText.innerText = `DIA ${dayOfCycle} DE 30`;
+                diaryText.innerText = `Estas en el dia ${dayOfCycle} del ciclo.`;
                 badge.className = "w-2 h-2 rounded-full bg-green-500 animate-pulse";
             }
         }
@@ -836,10 +1167,10 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
             const msgEl = document.getElementById('dynamic-motivation');
             let week = Math.min(Math.ceil(dayOfCycle / 7), 4);
             const messages = {
-                1: "El primer paso siempre es el más difícil. Estás construyendo Tu Mejor Versión.",
-                2: "La motivación te inicia, el hábito te mantiene.",
-                3: "Aquí es donde la mayoría renuncia. Tú eres diferente.",
-                4: "¡Recta final! Cierra fuerte para desbloquear el siguiente nivel."
+                1: "El primer paso siempre es el mas dificil. Estas construyendo Tu Mejor Version.",
+                2: "La motivacion te inicia, el habito te mantiene.",
+                3: "Aqui es donde la mayoria renuncia. Tu eres diferente.",
+                4: "Recta final! Cierra fuerte para desbloquear el siguiente nivel."
             };
             msgEl.innerText = messages[week];
         }
@@ -914,7 +1245,7 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
                 let classes = "day-check h-14 rounded-xl flex flex-col items-center justify-center border border-gray-800 bg-black/40 relative select-none";
                 if (isToday) classes += " today-border";
                 if (completed) { classes += " completed"; dayDiv.innerHTML = `<i class="fas fa-check text-xl"></i>`; }
-                else { dayDiv.innerHTML = `<span class="text-[8px] text-gray-500 font-bold uppercase tracking-wider">DÍA</span><span class="text-white font-heading text-lg font-bold">${i+1}</span>`; }
+                else { dayDiv.innerHTML = `<span class="text-[8px] text-gray-500 font-bold uppercase tracking-wider">DIA</span><span class="text-white font-heading text-lg font-bold">${i+1}</span>`; }
                 dayDiv.className = classes;
                 dayDiv.onclick = () => toggleDay(i);
                 grid.appendChild(dayDiv);
@@ -971,8 +1302,8 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
                         <span class="text-[10px] text-gray-500 uppercase tracking-widest">${day.exercises.length} MOVIMIENTOS</span>
                     </div>
                     <div class="bg-gradient-to-r from-yellow-900/20 to-transparent border-l-2 border-gold p-4 rounded-r-xl mb-6">
-                        <h3 class="text-gold font-heading text-sm uppercase mb-1 flex items-center"><i class="fas fa-fire-alt mr-2"></i> Activación</h3>
-                        <p class="text-[10px] text-gray-400 leading-relaxed">Inicia con 5-10 min de cardio ligero + 2 series de aproximación.</p>
+                        <h3 class="text-gold font-heading text-sm uppercase mb-1 flex items-center"><i class="fas fa-fire-alt mr-2"></i> Activacion</h3>
+                        <p class="text-[10px] text-gray-400 leading-relaxed">Inicia con 5-10 min de cardio ligero + 2 series de aproximacion.</p>
                     </div>
                     <div class="space-y-3">
             `;
@@ -996,7 +1327,7 @@ En INFIT también te podemos apoyar con tu plan de alimentación. </p>
             html += `</div>
                     <div class="bg-gradient-to-r from-blue-900/20 to-transparent border-l-2 border-blue-500 p-4 rounded-r-xl mt-6">
                         <h3 class="text-blue-400 font-heading text-sm uppercase mb-1 flex items-center"><i class="fas fa-snowflake mr-2"></i> Enfriamiento</h3>
-                        <p class="text-[10px] text-gray-400 leading-relaxed">Finaliza con 5-10 min de estiramientos estáticos.</p>
+                        <p class="text-[10px] text-gray-400 leading-relaxed">Finaliza con 5-10 min de estiramientos estaticos.</p>
                     </div>
             </div>`;
             container.innerHTML = html;
